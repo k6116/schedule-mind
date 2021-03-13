@@ -203,14 +203,15 @@ def solve_shift_scheduling(params, output_proto):
 
     # Request: (employee, shift, day, weight)
     # A negative weight indicates that the employee desire this assignment.
-    requests = [
+    # requests = [
         # Employee 3 wants the first Saturday off.
         # (3, 0, 5, -2),
         # Employee 5 wants a night shift on the second Thursday.
         # (5, 3, 10, -2),
         # Employee 2 does not want a night shift on the third Friday.
         # (2, 3, 4, 4)
-    ]
+    # ]
+    requests = jsObj['employeeRequests']
 
     # Shift constraints on continuous sequence :
     #     (shift, hard_min, soft_min, min_penalty,

@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form">
+    <ng-container formArrayName="employees">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Shift (O,M,A,N)</th>
+            <th>Day (0-N)</th>
+            <th>Weight (+-)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let control of form.get('employees')['controls']; let i = index" [formGroupName]="i">
+            <td style="width: 40%"><input type="text" class="form-control" formControlName="name"></td>
+            <td><input type="text" class="form-control" formControlName="shift"></td>
+            <td><input type="text" class="form-control" formControlName="day"></td>
+            <td><input type="text" class="form-control" formControlName="weight"></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </ng-container>
+  </form>
+  <div class="row" style="padding-top: 10px">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="addEmployee()">Add Employee</button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

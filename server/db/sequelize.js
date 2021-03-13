@@ -20,21 +20,20 @@ const config = require('./config').config;
 //   })
 // } else {
 //   // the application is executed on the local machine ... use mysql
-  sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
+var sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
 // }
 
-function connect() {
+// const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
 
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log(`Postgres connection to database '${sequelize.config.database}' has been established successfully`);
-    })
-    .catch(err => {
-      console.error('Unable to connect to the database:', err);
-    });
-
+async function connect() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 }
+
 module.exports = {
   sequelize: sequelize,
   connect: connect
