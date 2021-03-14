@@ -9,19 +9,19 @@ const config = require('./config').config;
 //   dialect: config.dialect
 // });
 
-// if (process.env.DATABASE_URL) {
-//   // the application is executed on Heroku ... use the postgres database
-//   sequelize = new Sequelize(process.env.DATABASE_URL, {
-//     dialect:  'postgres',
-//     protocol: 'postgres',
-//     dialectOptions: {
-//       ssl: true
-//   }
-//   })
-// } else {
-//   // the application is executed on the local machine ... use mysql
-var sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
-// }
+if (process.env.DATABASE_URL) {
+  // the application is executed on Heroku ... use the postgres database
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect:  'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: true
+  }
+  })
+} else {
+  // the application is executed on the local machine ... use mysql
+  var sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
+}
 
 // const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
 
