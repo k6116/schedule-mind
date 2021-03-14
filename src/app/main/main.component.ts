@@ -75,7 +75,7 @@ export class MainComponent implements OnInit {
     console.log('rawValue', rawValue);
     this.apiDataService.runPythonScheduler(rawValue).subscribe(
       res => {
-        // console.log('python response', res);
+        console.log('python response', res);
         const jsonResult = JSON.parse(res);
         // console.log('data', jsonResult.data);
         // this.schedulesData = jsonResult.data;
