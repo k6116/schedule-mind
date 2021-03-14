@@ -15,7 +15,8 @@ if (process.env.DATABASE_URL) {
     dialect:  'postgres',
     protocol: 'postgres',
     dialectOptions: {
-      ssl: true
+      ssl: true,
+      rejectUnauthorized: false
     }
   })
 } else {
