@@ -16,11 +16,11 @@ if (process.env.DATABASE_URL) {
     protocol: 'postgres',
     dialectOptions: {
       ssl: true
-  }
+    }
   })
 } else {
   // the application is executed on the local machine ... use mysql
-  var sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
+  sequelize = new Sequelize('postgres', 'postgres', 'postgres', config);
 }
 
 // const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
